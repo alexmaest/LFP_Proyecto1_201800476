@@ -100,8 +100,8 @@ class failsReport:
                             <table class="table">
                             <thead style="color:white; background-color: rgb(0, 50, 199); text-transform:uppercase; text-align: center;">
                                 <tr>
-                                <th scope="col">Token</th>
                                 <th scope="col">Lexema</th>
+                                <th scope="col">Token</th>
                                 <th scope="col">Fila</th>
                                 <th scope="col">Columna</th>
                                 </tr>

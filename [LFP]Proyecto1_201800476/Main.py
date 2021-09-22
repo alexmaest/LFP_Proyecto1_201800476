@@ -13,6 +13,7 @@ import webbrowser
 tokens = []
 images = []
 List_images = []
+filtherName = []
 total_rows = 0
 total_columns = 0
 gCont = 0
@@ -110,28 +111,36 @@ def nextImage():
     imageName0 =  str(images[gCont].titulo)
     imageName1 = imageName0.replace("\"", "")
     name = imageName1.lower()
+    upperName = imageName1.upper()
+    Label(tab2, text=upperName, width=10, fg="#FFFFFF", bg = "#010030", font = "Sabon 18").place(x=10, y=75)
     global antImage
     global sigImage
     global List_images
     List_images = []
+    global filtherName
+    filtherName = []
     try:
         image_no_1 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_normal.jpg"))
         List_images.append(image_no_1)
+        filtherName.append("Normal")
     except:
         pass
     try:
         image_no_2 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_mirrorx.jpg"))
         List_images.append(image_no_2)
+        filtherName.append("MirrorX")
     except:
         pass
     try:
         image_no_3 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_mirrory.jpg"))
         List_images.append(image_no_3)
+        filtherName.append("MirrorY")
     except:
         pass
     try:
         image_no_4 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_doublemirror.jpg"))
         List_images.append(image_no_4)
+        filtherName.append("DoubleMirror")
     except:
         pass
 
@@ -148,29 +157,37 @@ def anteImage():
     gCont -= 1
     imageName0 =  str(images[gCont].titulo)
     imageName1 = imageName0.replace("\"", "")
+    upperName = imageName1.upper()
+    Label(tab2, text=upperName, width=10, fg="#FFFFFF", bg = "#010030", font = "Sabon 18").place(x=10, y=75)
     name = imageName1.lower()
     global sigImage
     global antImage
     global List_images
     List_images = []
+    global filtherName
+    filtherName = []
     try:
         image_no_1 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_normal.jpg"))
         List_images.append(image_no_1)
+        filtherName.append("Normal")
     except:
         pass
     try:
         image_no_2 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_mirrorx.jpg"))
         List_images.append(image_no_2)
+        filtherName.append("MirrorX")
     except:
         pass
     try:
         image_no_3 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_mirrory.jpg"))
         List_images.append(image_no_3)
+        filtherName.append("MirrorY")
     except:
         pass
     try:
         image_no_4 = ImageTk.PhotoImage(Image.open("template/images/png/" + str(name) + "_doublemirror.jpg"))
         List_images.append(image_no_4)
+        filtherName.append("DoubleMirror")
     except:
         pass
 
@@ -184,9 +201,10 @@ def forward(img_no):
     global button_back
     tab2.grid_forget()
     Label(tab2, image=List_images[img_no-1]).place(x=450, y=175)
+    Label(tab2, text=filtherName[img_no-1], width=10, fg="#FFFFFF", bg = "#162742", font = "Helvetica 16 bold italic").place(x=430, y=125)
     button_forward = Button(tab2, text="Siguiente", command=lambda: forward(img_no+1)).place(x=710, y=130)
     button_back = Button(tab2, text="Anterior", command=lambda: back(img_no-1)).place(x=650, y=130)
-    if img_no ==4:
+    if img_no ==len(List_images):
 	    button_forward = Button(tab2, text="Siguiente", state=DISABLED).place(x=710, y=130)
     if img_no==1:
 	    button_back = Button(tab2, text="Anterior", state=DISABLED).place(x=650, y=130)
@@ -196,6 +214,7 @@ def back(img_no):
     global button_back
     tab2.grid_forget()
     Label(tab2, image=List_images[img_no-1]).place(x=450, y=175)
+    Label(tab2, text=filtherName[img_no-1], width=10, fg="#FFFFFF", bg = "#162742", font = "Helvetica 16 bold italic").place(x=430, y=125)
     button_forward = Button(tab2, text="Siguiente", command=lambda: forward(img_no+1)).place(x=710, y=130)
     button_back = Button(tab2, text="Anterior", command=lambda: back(img_no-1)).place(x=650, y=130)
     if img_no ==1:
@@ -223,21 +242,22 @@ t.Label(tab1, text="", width=200, height=36, bg = "#162742").place(x=0, y=0)
 t.Label(tab1, text="BITXELART", fg="#fcba03", width=10, height=10, bg = "#162742", font = "Helvetica 32 bold italic").place(x=265, y=0)
 t.Button(tab1, text="Cargar archivo", width=25, command = returnValue, font = "Arial 14").place(x=260, y=280)
 t.Label(tab1, text = "", width=130, height=20, bg = "dark gray").place(x=0, y=550)
-t.Label(tab1, text = "   201800476 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
+t.Label(tab1, text = "   2021 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
 
 #TAB2
 t.Label(tab2, text="", width=200, height=36, bg = "#162742").place(x=0, y=0)
+Label(tab2, width=30, height=36, bg ="#010030").place(x=0, y=0)
 t.Label(tab2, text="Analizar", width=10, fg="#fcba03", bg = "#162742", font = "Helvetica 24 bold italic").place(x=600, y=30)
 button_forward = Button(tab2, text="Siguiente", command=lambda: forward(1)).place(x=710, y=130)
 button_back = Button(tab2, text="Anterior", command=lambda: back(1)).place(x=650, y=130)
 sigImage = Button(tab2, text=" ↓ ", command=nextImage).place(x=400, y=480)
 antImage = Button(tab2, text=" ↑ ", command=anteImage).place(x=400, y=440)
-t.Label(tab2, text="Lista", width=10, fg="#fcba03", bg = "#162742", font = "Helvetica 12").place(x=-10, y=175)
+t.Label(tab2, text="Lista", width=10, fg="#FFFFFF", bg = "#010030", font = "Helvetica 12").place(x=-10, y=175)
 t.Label(tab2, text="Filtros", width=10, fg="#fcba03", bg = "#162742", font = "Helvetica 12").place(x=660, y=100)
 t.Label(tab2, text="Imágenes", width=10, fg="#fcba03", bg = "#162742", font = "Helvetica 12").place(x=290, y=460)
 t.Label(tab2, text = "", width=20, height=19, bg = "white").place(x=20, y=220)
 t.Label(tab2, text = "", width=130, height=20, bg = "dark gray").place(x=0, y=550)
-t.Label(tab2, text = "   201800476 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
+t.Label(tab2, text = "   2021 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
 
 #TAB3
 t.Label(tab3, text="", width=200, height=36, bg = "#162742").place(x=0, y=0)
@@ -245,7 +265,7 @@ t.Label(tab3, text="Reportes", width=10, fg="#fcba03", bg = "#162742", font = "H
 t.Button(tab3, text="Tokens", width=15, command = reportTokens, font = "Arial 14").place(x=600, y=130)
 t.Button(tab3, text="Errores", width=15, command = reportError, font = "Arial 14").place(x=600, y=180)
 t.Label(tab3, text = "", width=130, height=20, bg = "dark gray").place(x=0, y=550)
-t.Label(tab3, text = "   201800476 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
+t.Label(tab3, text = "   2021 - Proyecto 1 de Lenguajes formales y de programación", fg="black", bg = "dark gray").place(x=0, y=550)
 
 v.mainloop()
 
