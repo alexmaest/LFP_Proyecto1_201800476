@@ -197,7 +197,7 @@ class Analizador:
                     elif current == "$" and index == textLen - 1:
                         #self.printTokens()
                         print("\n")
-                        print("Analisis Finalizado mi pai")
+                        print("Analisis Finalizado")
                         print("\n")
                         break
                     else:

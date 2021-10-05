@@ -92,18 +92,18 @@ def returnValue():
 def reportTokens():
     global tokens
     tokenReport(tokens)
-    messagebox.showinfo("Información","Reporte generado")
-    new = 1
-    url = "C:/Users/alexi/Downloads/ALEXI/Cursos/17 Lenguajes Formales/Laboratorio/Proyectos/Proyecto 1/Proyecto_01/template/reportes/reporte_Tokens.html"
-    webbrowser.open(url,new=new)
+    messagebox.showinfo("Información","Reporte generado en la carpeta reportes")
+    #new = 1
+    #url = "C:/Users/alexi/Downloads/ALEXI/Cursos/17 Lenguajes Formales/Laboratorio/Proyectos/Proyecto 1/Proyecto_01/template/reportes/reporte_Tokens.html"
+    #webbrowser.open(url,new=new)
 
 def reportError():
     global tokens
     failsReport(tokens)
-    messagebox.showinfo("Información","Reporte generado")
-    new = 1
-    url = "C:/Users/alexi/Downloads/ALEXI/Cursos/17 Lenguajes Formales/Laboratorio/Proyectos/Proyecto 1/Proyecto_01/template/reportes/reporte_Errores.html"
-    webbrowser.open(url,new=new)
+    messagebox.showinfo("Información","Reporte generado en la carpeta reportes")
+    #new = 1
+    #url = "C:/Users/alexi/Downloads/ALEXI/Cursos/17 Lenguajes Formales/Laboratorio/Proyectos/Proyecto 1/Proyecto_01/template/reportes/reporte_Errores.html"
+    #webbrowser.open(url,new=new)
 
 def nextImage():
     global images
